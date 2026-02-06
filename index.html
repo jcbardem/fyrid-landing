@@ -1,31 +1,1325 @@
-/* CORRECCIÓN PARA LA SECCIÓN "CÓMO FUNCIONA FYRID" */
-.demo {
-  color: var(--Labels-Primary);
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fyrid - Tu idea vale dinero. Antes de construirla. Marketplace de ideas innovadoras">
+    <title>Fyrid - Marketplace de Ideas Innovadoras</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+        VARIABLES DE COLOR - ESTILO DE LA APP REAL
+        ============================================ */
+        :root {
+            /* Colores base - Estilo de tu app real */
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #15233c;
+            --bg-card: #1a2b4d;
+            --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            --flame-color: #f97316;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-tertiary: #94a3b8;
+            --border-primary: #334155;
+            --border-glow: #6366f1;
+            --border-glow-secondary: #8b5cf6;
+            --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-.demo h1, 
-.demo h2, 
-.demo h3,
-.demo p,
-.demo .section-title h2,
-.demo .section-title p,
-.demo .step h3,
-.demo .step p {
-  color: var(--Labels-Primary) !important;
-}
+        /* Dark mode - ya está incorporado */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                /* Ya usamos el tema oscuro */
+            }
+        }
 
-.demo h2 {
-  color: var(--Labels-Primary) !important;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.demo .section-title p {
-  color: var(--Labels-Secondary) !important;
-}
+        html {
+            scroll-behavior: smooth;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
 
-.step h3 {
-  color: var(--Labels-Primary) !important;
-}
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
 
-.step p {
-  color: var(--Labels-Secondary) !important;
-}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ============================================
+        FLAME ICON - ESTILO DE TU LOGO
+        ============================================ */
+        .flame-icon {
+            display: inline-block;
+            position: relative;
+            width: 48px;
+            height: 48px;
+        }
+
+        .flame-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 70%, #f97316 0%, #ea580c 70%, transparent 100%);
+            border-radius: 50%;
+            filter: blur(2px);
+            animation: pulse 3s infinite;
+        }
+
+        .flame-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(circle at 50% 70%, #ff9e3d 0%, #f97316 70%, transparent 100%);
+            border-radius: 50%;
+            animation: pulse 4s infinite;
+        }
+
+        .flame-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 70%, #f97316 0%, #ea580c 100%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .flame-inner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 70%, #ff9e3d 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        /* ============================================
+        HEADER
+        ============================================ */
+        header {
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-primary);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.75rem;
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 10px rgba(249, 115, 22, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 1rem;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+ left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.875rem 1.75rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .cta-button:hover::before {
+            opacity: 1;
+        }
+
+        /* ============================================
+        HERO SECTION
+        ============================================ */
+        .hero {
+            padding: 8rem 0 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary) 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero h1 .highlight {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 15px rgba(249, 115, 22, 0.4);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+        }
+
+        .waitlist-form {
+            max-width: 550px;
+            margin: 0 auto 3rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .waitlist-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--border-primary);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: var(--transition);
+            background: rgba(30, 41, 59, 0.5);
+            color: var(--text-primary);
+            backdrop-filter: blur(10px);
+        }
+
+        .waitlist-form input:focus {
+            outline: none;
+            border-color: var(--border-glow);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+        }
+
+        .waitlist-form button {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .waitlist-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .social-proof {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .proof-item {
+            background: var(--bg-card);
+            padding: 1.25rem 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-card);
+            min-width: 180px;
+            border: 1px solid var(--border-primary);
+            transition: var(--transition);
+        }
+
+        .proof-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-glow);
+        }
+
+        .proof-item strong {
+            font-size: 1.75rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.25rem;
+            font-family: 'Space Grotesk', sans-serif;
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .proof-item span {
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* ============================================
+        HOW IT WORKS SECTION
+        ============================================ */
+        .how-it-works {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--text-primary) 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .steps {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .step {
+            position: relative;
+            padding: 2.5rem;
+            border-radius: 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-primary);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .step:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-glow);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .step-number {
+            width: 64px;
+            height: 64px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.75rem;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+        }
+
+        .step-number::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.1);
+            z-index: -1;
+        }
+
+        .step h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .step p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .step-card {
+            position: relative;
+            background: var(--bg-tertiary);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid var(--border-primary);
+            margin-top: 2rem;
+            transition: var(--transition);
+        }
+
+        .step-card:hover {
+            border-color: var(--border-glow);
+        }
+
+        .step-card h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .step-card h4::before {
+            content: '';
+            width: 24px;
+            height: 24px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .step-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .step-card .flame-icon {
+            width: 36px;
+            height: 36px;
+            margin: 1rem auto;
+        }
+
+        /* ============================================
+        BLOCKCHAIN CERTIFICATE SECTION
+        ============================================ */
+        .certificate {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certificate::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .certificate-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-primary);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        .certificate-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-primary);
+        }
+
+        .certificate-header {
+            padding: 2.5rem;
+            text-align: center;
+            background: rgba(15, 23, 42, 0.5);
+            border-bottom: 1px solid var(--border-primary);
+        }
+
+        .certificate-header .flame-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .certificate-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--text-primary) 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .certificate-header p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .certificate-content {
+            padding: 3rem;
+        }
+
+        .certificate-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .certificate-detail {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--border-primary);
+            transition: var(--transition);
+        }
+
+        .certificate-detail:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-5px);
+        }
+
+        .certificate-detail h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .certificate-detail p {
+            color: var(--text-tertiary);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .certificate-history {
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 16px;
+            border: 1px solid var(--border-primary);
+            overflow: hidden;
+        }
+
+        .history-header {
+            padding: 1.5rem;
+            background: rgba(15, 23, 42, 0.5);
+            border-bottom: 1px solid var(--border-primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .history-header h {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .history-table th {
+            padding: 1.25rem;
+            text-align: left;
+            color: var(--text-tertiary);
+            font-weight: 500;
+            border-bottom: 1px solid var(--border-primary);
+        }
+
+        .history-table td {
+            padding: 1.25rem;
+            border-bottom: 1px solid var(--border-primary);
+            color: var(--text-secondary);
+        }
+
+        .history-table tr:hover {
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .history-table .bid-win {
+            color: #f97316;
+            font-weight: 600;
+        }
+
+        .history-table .bid-win::before {
+            content: '🏆';
+            margin-right: 0.5rem;
+        }
+
+        .actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .action-button {
+            flex: 1;
+            min-width: 150px;
+            padding: 1rem;
+            border-radius: 12px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .action-button:first-child {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .action-button:nth-child(2) {
+            background: rgba(15, 23, 42, 0.5);
+            color: var(--text-primary);
+            border: 1px solid var(--border-primary);
+        }
+
+        .action-button:last-child {
+            background: rgba(15, 23, 42, 0.5);
+            color: var(--text-primary);
+            border: 1px solid var(--border-primary);
+        }
+
+        .action-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ============================================
+        CTA SECTION
+        ============================================ */
+        .cta-section {
+            padding: 8rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .cta-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--text-primary) 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-section p {
+            font-size: 1.125rem;
+            margin-bottom: 2.5rem;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .cta-form {
+            max-width: 550px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .cta-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--border-primary);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: var(--transition);
+            background: rgba(30, 41, 59, 0.5);
+            color: var(--text-primary);
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-form input:focus {
+            outline: none;
+            border-color: var(--border-glow);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+        }
+
+        .cta-form button {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .cta-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        /* ============================================
+        FOOTER
+        ============================================ */
+        footer {
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--border-primary);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-column h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.875rem;
+        }
+
+        .footer-links a {
+            color: var(--text-tertiary);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-links a::after {
+            content: '→';
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover::after {
+            opacity: 1;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border-primary);
+            margin-top: 3rem;
+        }
+
+        /* ============================================
+        ANIMATIONS
+        ============================================ */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .animate-delay-1 { animation-delay: 0.1s; }
+        .animate-delay-2 { animation-delay: 0.2s; }
+        .animate-delay-3 { animation-delay: 0.3s; }
+        .animate-delay-4 { animation-delay: 0.4s; }
+
+        /* ============================================
+        RESPONSIVE
+        ============================================ */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links a {
+                font-size: 0.95rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .waitlist-form {
+                flex-direction: column;
+            }
+
+            .social-proof {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .section-title p {
+                font-size: 1rem;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section h2 {
+                font-size: 2.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .waitlist-form input,
+            .waitlist-form button {
+                padding: 0.875rem;
+                font-size: 0.95rem;
+            }
+
+            .proof-item {
+                padding: 1rem;
+                min-width: 150px;
+            }
+
+            .proof-item strong {
+                font-size: 1.5rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.75rem;
+            }
+
+            .step h3 {
+                font-size: 1.25rem;
+            }
+
+            .step p {
+                font-size: 0.95rem;
+            }
+
+            .step-image {
+                height: 180px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <div class="flame-icon">
+                        <div class="flame-inner"></div>
+                    </div>
+                </div>
+                <div class="logo-text">FYRID</div>
+            </a>
+            <nav class="nav-links">
+                <a href="#how-it-works">Cómo funciona</a>
+                <a href="#certificate">Certificado</a>
+                <a href="#testimonials">Testimonios</a>
+            </nav>
+            <a href="#cta" class="cta-button">Unirse a Beta</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="animate-fade-in">Tu idea vale dinero. <span class="highlight">Antes de construirla.</span></h1>
+            <p class="animate-fade-in animate-delay-1">Fyrid es el marketplace donde las ideas se compran, venden y certifican como activos digitales con blockchain.</p>
+            
+            <form class="waitlist-form animate-fade-in animate-delay-2" id="waitlistForm">
+                <input type="email" placeholder="tu@email.com" required>
+                <button type="submit">Reservar acceso →</button>
+            </form>
+
+            <div class="social-proof animate-fade-in animate-delay-3">
+                <div class="proof-item">
+                    <strong>142+</strong>
+                    <span>Creadores en espera</span>
+                </div>
+                <div class="proof-item">
+                    <strong>$25K+</strong>
+                    <span>Valor en ideas</span>
+                </div>
+                <div class="proof-item">
+                    <strong>8</strong>
+                    <span>Empresas patrocinando</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS SECTION -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>Cómo funciona Fyrid</h2>
+                <p>De la idea al activo digital en 3 simples pasos</p>
+            </div>
+
+            <div class="steps">
+                <div class="step animate-fade-in">
+                    <div class="step-number">1</div>
+                    <h3>Crea tu idea</h3>
+                    <p>Escribe tu concepto, selecciona categoría y deja que nuestra IA lo clasifique automáticamente en Fyrid Space, Industrial, Doméstico o Primitive.</p>
+                    
+                    <div class="step-card">
+                        <h4>Clasificación Fyrid</h4>
+                        <p>Nuestra IA analiza tu idea y la clasifica según su impacto y tiempo de ejecución, permitiendo una valoración precisa desde el principio.</p>
+                    </div>
+                </div>
+
+                <div class="step animate-fade-in animate-delay-1">
+                    <div class="step-number">2</div>
+                    <h3>Entra al marketplace</h3>
+                    <p>Tu idea recibe una valoración inicial y comienza a ganar ⚡ Energy con cada interacción. Observa cómo su valor fluctúa en tiempo real.</p>
+                    
+                    <div class="step-card">
+                        <h4>Valoración Dinámica</h4>
+                        <p>El valor de tu idea se ajusta en tiempo real basado en la interacción de la comunidad, creando un mercado dinámico y transparente.</p>
+                    </div>
+                </div>
+
+                <div class="step animate-fade-in animate-delay-2">
+                    <div class="step-number">3</div>
+                    <h3>Trade y certifica</h3>
+                    <p>Vende tu idea, recibe tokens y obtén tu certificado blockchain de propiedad intelectual. ¡Tu creatividad ahora es un activo tangible!</p>
+                    
+                    <div class="step-card">
+                        <h4>Certificación Blockchain</h4>
+                        <p>Cada idea adquirida recibe un certificado digital verificable e intransferible que garantiza tu propiedad intelectual.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOCKCHAIN CERTIFICATE SECTION -->
+    <section class="certificate" id="certificate">
+        <div class="container">
+            <div class="certificate-card">
+                <div class="certificate-header">
+                    <div class="flame-icon">
+                        <div class="flame-inner"></div>
+                    </div>
+                    <h2>Blockchain Certificate</h2>
+                    <p>Verifica la propiedad intelectual de tu idea con nuestro certificado blockchain</p>
+                </div>
+                
+                <div class="certificate-content">
+                    <div class="certificate-details">
+                        <div class="certificate-detail">
+                            <h3>Propiedad Verificada</h3>
+                            <p>ID: 123456789</p>
+                        </div>
+                        <div class="certificate-detail">
+                            <h3>Fecha de Emisión</h3>
+                            <p>2023-10-15</p>
+                        </div>
+                        <div class="certificate-detail">
+                            <h3>Valor Inicial</h3>
+                            <p>$1000</p>
+                        </div>
+                        <div class="certificate-detail">
+                            <h3>Valor Final</h3>
+                            <p>$5000</p>
+                        </div>
+                    </div>
+                    
+                    <div class="certificate-history">
+                        <div class="history-header">
+                            <h3>Historial de Pujas</h3>
+                        </div>
+                        <table class="history-table">
+                            <thead>
+                                <tr>
+                                    <th>Puja</th>
+                                    <th>Monto</th>
+                                    <th>Fecha</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Bid 1</td>
+                                    <td>$1000</td>
+                                    <td>10/01/2023</td>
+                                </tr>
+                                <tr class="bid-win">
+                                    <td>Bid 2</td>
+                                    <td>$2500</td>
+                                    <td>10/02/2023</td>
+                                </tr>
+                                <tr>
+                                    <td>Bid 2</td>
+                                    <td>$5000</td>
+                                    <td>10/05/2023</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="actions">
+                        <button class="action-button">Colaborar</button>
+                        <button class="action-button">Monetizar</button>
+                        <button class="action-button">Promover Idea</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2 class="animate-fade-in">¿Listo para monetizar tus ideas?</h2>
+            <p class="animate-fade-in animate-delay-1">Únete a la beta cerrada y sé de los primeros en transformar creatividad en capital.</p>
+
+            <form class="cta-form animate-fade-in animate-delay-2" id="finalWaitlistForm">
+                <input type="email" placeholder="tu@email.com" required>
+                <button type="submit">Acceder a Beta</button>
+            </form>
+
+            <div class="cta-benefits animate-fade-in animate-delay-3">
+                <div class="cta-benefit">
+                    <strong>Early Access</strong>
+                    <span>Acceso prioritario</span>
+                </div>
+                <div class="cta-benefit">
+                    <strong>100 Fyrid</strong>
+                    <span>Tokens de bienvenida</span>
+                </div>
+                <div class="cta-benefit">
+                    <strong>Badge</strong>
+                    <span>Perfil exclusivo</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <a href="#" class="logo" style="display: inline-flex; align-items: center; gap: 0.75rem; text-decoration: none;">
+                        <div class="flame-icon">
+                            <div class="flame-inner"></div>
+                        </div>
+                        <div class="logo-text">FYRID</div>
+                    </a>
+                    <p style="color: var(--text-tertiary); margin-top: 1rem; line-height: 1.7;">
+                        El marketplace de ideas innovadoras. Transformando creatividad en activos digitales desde 2024.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Enlaces</h3>
+                    <ul class="footer-links">
+                        <li><a href="#how-it-works">Cómo funciona</a></li>
+                        <li><a href="#certificate">Certificado</a></li>
+                        <li><a href="#">Testimonios</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Términos de servicio</a></li>
+                        <li><a href="#">Política de privacidad</a></li>
+                        <li><a href="#">Propiedad intelectual</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:hello@fyrid.app">hello@fyrid.app</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2024 Fyrid. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handler
+        document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            addToWaitlist(email);
+        });
+
+        document.getElementById('finalWaitlistForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            addToWaitlist(email);
+        });
+
+        function addToWaitlist(email) {
+            // Aquí iría la integración con tu backend/Email service
+            console.log('Email añadido a waitlist:', email);
+            
+            // Simular éxito
+            alert('¡Excelente! ' + email + ' ha sido añadido a la lista de espera. Te contactaremos pronto.');
+            
+            // Reset form
+            document.getElementById('waitlistForm').reset();
+            document.getElementById('finalWaitlistForm').reset();
+            
+            // Actualizar contador de social proof (simulado)
+            const creatorsCount = document.querySelector('.proof-item:first-child strong');
+            creatorsCount.textContent = (parseInt(creatorsCount.textContent) + 1) + '+';
+        }
+
+        // Smooth scroll para links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const target = document.querySelector(targetId);
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animación al hacer scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.step, .certificate-detail, .action-button').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(15, 23, 42, 0.98)';
+                header.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
+            } else {
+                header.style.background = 'rgba(15, 23, 42, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
