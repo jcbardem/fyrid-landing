@@ -14,13 +14,13 @@
         VARIABLES DE COLOR - EXTRAÍDAS DE TU APP
         ============================================ */
         :root {
-            /* Colores base de Fyrid - EXTRAÍDOS DE TUS CSS */
+            /* Colores base de Fyrid */
             --Bg-Primary: #ffffff;
             --BgGp-Primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
             --BgGp-Secondary: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
             --Fills-F1: #f9fafb;
             --Fills-F1-hover: #f3f4f6;
-            --Labels-Primary: #1f2937;      /* Texto principal - GRIS OSCURO */
+            --Labels-Primary: #1f2937;      /* Texto principal - NEGRO OSCURO */
             --Labels-Secondary: #6b7280;    /* Texto secundario - GRIS MEDIO */
             --Labels-Tertiary: #9ca3af;     /* Texto terciario - GRIS CLARO */
             --Separators-S1: #e5e7eb;
@@ -187,7 +187,7 @@
             font-weight: 800;
             margin-bottom: 1.5rem;
             line-height: 1.2;
-            color: var(--Labels-Primary); /* Texto oscuro para mejor contraste */
+            color: var(--Labels-Primary);
             font-family: 'Pixelify Sans', sans-serif;
         }
 
@@ -200,7 +200,7 @@
 
         .hero p {
             font-size: 1.25rem;
-            color: var(--Labels-Secondary); /* Texto secundario para subtítulo */
+            color: var(--Labels-Secondary);
             margin-bottom: 3rem;
             max-width: 650px;
             margin-left: auto;
@@ -370,7 +370,7 @@
             background: linear-gradient(135deg, #f0f9ff 0%, #fef3c7 100%);
             position: relative;
             overflow: hidden;
-            color: var(--Labels-Primary); /* Texto oscuro para mejor legibilidad */
+            color: var(--Labels-Primary);
         }
 
         .demo::before {
@@ -399,7 +399,7 @@
             text-align: center;
             position: relative;
             padding: 2rem;
-            color: var(--Labels-Primary); /* Texto oscuro */
+            color: var(--Labels-Primary);
         }
 
         .step::before {
@@ -422,7 +422,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white; /* Texto blanco para contraste máximo */
+            color: white;
             font-weight: 700;
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
@@ -436,11 +436,11 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--Labels-Primary); /* Título oscuro */
+            color: var(--Labels-Primary);
         }
 
         .step p {
-            color: var(--Labels-Secondary); /* Texto secundario */
+            color: var(--Labels-Secondary);
             max-width: 450px;
             margin: 0 auto;
             font-size: 1.05rem;
@@ -855,6 +855,32 @@
                 height: 180px;
                 font-size: 0.95rem;
             }
+        }
+
+        /* ============================================
+        CORRECCIÓN ESPECÍFICA PARA LA SECCIÓN DEMO
+        ============================================ */
+        /* Asegura que TODOS los elementos de texto en .demo tengan color oscuro */
+        .demo * {
+            color: var(--Labels-Primary) !important;
+        }
+
+        .demo .section-title h2,
+        .demo .section-title p,
+        .demo h2,
+        .demo h3,
+        .demo p,
+        .demo .step h3,
+        .demo .step p {
+            color: var(--Labels-Primary) !important;
+        }
+
+        .demo .section-title p {
+            color: var(--Labels-Secondary) !important;
+        }
+
+        .demo .step p {
+            color: var(--Labels-Secondary) !important;
         }
     </style>
 </head>
