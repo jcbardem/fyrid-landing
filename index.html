@@ -10,18 +10,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* ============================================
+        VARIABLES DE COLOR - EXTRAÍDAS DE TU APP
+        ============================================ */
         :root {
+            /* Colores base de Fyrid - EXTRAÍDOS DE TUS CSS */
             --Bg-Primary: #ffffff;
             --BgGp-Primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
             --BgGp-Secondary: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
             --Fills-F1: #f9fafb;
             --Fills-F1-hover: #f3f4f6;
-            --Labels-Primary: #1f2937;
-            --Labels-Secondary: #6b7280;
-            --Labels-Tertiary: #9ca3af;
+            --Labels-Primary: #1f2937;      /* Texto principal - GRIS OSCURO */
+            --Labels-Secondary: #6b7280;    /* Texto secundario - GRIS MEDIO */
+            --Labels-Tertiary: #9ca3af;     /* Texto terciario - GRIS CLARO */
             --Separators-S1: #e5e7eb;
             --MaskBg-Base: rgba(0, 0, 0, 0.5);
             --Bg-Tertiary-hover: rgba(249, 250, 251, 0.8);
+            
+            /* Colores adicionales */
             --primary: #6366f1;
             --primary-dark: #4f46e5;
             --secondary: #10b981;
@@ -36,14 +42,15 @@
             --transition: all 0.3s ease-in-out;
         }
 
+        /* Dark mode */
         @media (prefers-color-scheme: dark) {
             :root {
                 --Bg-Primary: #0f172a;
                 --Fills-F1: #1e293b;
                 --Fills-F1-hover: #334155;
-                --Labels-Primary: #f8fafc;
-                --Labels-Secondary: #cbd5e1;
-                --Labels-Tertiary: #94a3b8;
+                --Labels-Primary: #f8fafc;      /* Blanco claro para texto principal */
+                --Labels-Secondary: #cbd5e1;    /* Gris claro para texto secundario */
+                --Labels-Tertiary: #94a3b8;     /* Gris medio para texto terciario */
                 --Separators-S1: #334155;
             }
         }
@@ -60,7 +67,7 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 10%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: var(--Labels-Primary);
             line-height: 1.6;
             overflow-x: hidden;
@@ -73,6 +80,9 @@
             padding: 0 2rem;
         }
 
+        /* ============================================
+        HEADER
+        ============================================ */
         header {
             padding: 2rem 0;
             position: sticky;
@@ -151,6 +161,9 @@
             box-shadow: var(--shadow-lg);
         }
 
+        /* ============================================
+        HERO SECTION
+        ============================================ */
         .hero {
             padding: 6rem 0 4rem;
             text-align: center;
@@ -174,6 +187,7 @@
             font-weight: 800;
             margin-bottom: 1.5rem;
             line-height: 1.2;
+            color: var(--Labels-Primary); /* Texto oscuro para mejor contraste */
             font-family: 'Pixelify Sans', sans-serif;
         }
 
@@ -186,7 +200,7 @@
 
         .hero p {
             font-size: 1.25rem;
-            color: var(--Labels-Secondary);
+            color: var(--Labels-Secondary); /* Texto secundario para subtítulo */
             margin-bottom: 3rem;
             max-width: 650px;
             margin-left: auto;
@@ -269,6 +283,9 @@
             font-weight: 500;
         }
 
+        /* ============================================
+        FEATURES SECTION
+        ============================================ */
         .features {
             padding: 6rem 0;
             background: var(--Bg-Primary);
@@ -345,11 +362,15 @@
             line-height: 1.7;
         }
 
+        /* ============================================
+        DEMO SECTION - CORREGIDA PARA MEJOR CONTRASTE
+        ============================================ */
         .demo {
             padding: 6rem 0;
             background: linear-gradient(135deg, #f0f9ff 0%, #fef3c7 100%);
             position: relative;
             overflow: hidden;
+            color: var(--Labels-Primary); /* Texto oscuro para mejor legibilidad */
         }
 
         .demo::before {
@@ -359,7 +380,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><circle cx="20" cy="20" r="2"/><circle cx="50" cy="50" r="3"/><circle cx="80" cy="80" r="2"/></svg>');
+            background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><circle cx="20" cy="20" r="2"/><circle cx="50" cy="50" r="3"/><circle cx="80" cy="80" r="2"/></svg>');
             background-size: 40px 40px;
         }
 
@@ -378,6 +399,7 @@
             text-align: center;
             position: relative;
             padding: 2rem;
+            color: var(--Labels-Primary); /* Texto oscuro */
         }
 
         .step::before {
@@ -400,7 +422,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: white; /* Texto blanco para contraste máximo */
             font-weight: 700;
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
@@ -414,11 +436,11 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--Labels-Primary);
+            color: var(--Labels-Primary); /* Título oscuro */
         }
 
         .step p {
-            color: var(--Labels-Secondary);
+            color: var(--Labels-Secondary); /* Texto secundario */
             max-width: 450px;
             margin: 0 auto;
             font-size: 1.05rem;
@@ -442,6 +464,9 @@
             border: 3px solid white;
         }
 
+        /* ============================================
+        FYRID CATEGORIES SECTION
+        ============================================ */
         .categories {
             padding: 6rem 0;
             background: var(--Bg-Primary);
@@ -499,6 +524,9 @@
             line-height: 1.6;
         }
 
+        /* ============================================
+        TESTIMONIALS
+        ============================================ */
         .testimonials {
             padding: 6rem 0;
             background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
@@ -538,6 +566,7 @@
             z-index: 1;
             font-style: italic;
             line-height: 1.7;
+            color: var(--Labels-Primary);
         }
 
         .testimonial-author {
@@ -571,6 +600,9 @@
             font-size: 0.875rem;
         }
 
+        /* ============================================
+        CTA SECTION
+        ============================================ */
         .cta-section {
             padding: 6rem 0;
             background: var(--BgGp-Primary);
@@ -582,6 +614,7 @@
             font-size: 2.75rem;
             font-weight: 700;
             margin-bottom: 1rem;
+            color: white;
             font-family: 'Pixelify Sans', sans-serif;
         }
 
@@ -593,6 +626,7 @@
             margin-right: auto;
             opacity: 0.95;
             line-height: 1.7;
+            color: rgba(255, 255, 255, 0.95);
         }
 
         .cta-form {
@@ -655,13 +689,18 @@
             font-size: 1.35rem;
             margin-bottom: 0.25rem;
             font-family: 'Pixelify Sans', sans-serif;
+            color: white;
         }
 
         .cta-benefit span {
             font-size: 0.95rem;
             opacity: 0.9;
+            color: rgba(255, 255, 255, 0.9);
         }
 
+        /* ============================================
+        FOOTER
+        ============================================ */
         footer {
             background: var(--Labels-Primary);
             color: white;
@@ -711,6 +750,9 @@
             margin-top: 3rem;
         }
 
+        /* ============================================
+        ANIMATIONS
+        ============================================ */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -725,6 +767,9 @@
         .animate-delay-3 { animation-delay: 0.3s; }
         .animate-delay-4 { animation-delay: 0.4s; }
 
+        /* ============================================
+        RESPONSIVE
+        ============================================ */
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -814,6 +859,7 @@
     </style>
 </head>
 <body>
+    <!-- HEADER -->
     <header>
         <div class="container header-content">
             <a href="#" class="logo">
@@ -830,6 +876,7 @@
         </div>
     </header>
 
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
             <h1 class="animate-fade-in">Tu idea vale dinero. <span class="highlight">Antes de construirla.</span></h1>
@@ -857,6 +904,7 @@
         </div>
     </section>
 
+    <!-- FEATURES SECTION -->
     <section class="features" id="features">
         <div class="container">
             <div class="section-title">
@@ -886,11 +934,12 @@
         </div>
     </section>
 
+    <!-- DEMO SECTION - CORREGIDA -->
     <section class="demo" id="demo">
         <div class="container">
             <div class="section-title">
-                <h2>Cómo funciona Fyrid</h2>
-                <p>De la idea al activo digital en 3 simples pasos</p>
+                <h2 style="color: var(--Labels-Primary);">Cómo funciona Fyrid</h2>
+                <p style="color: var(--Labels-Secondary);">De la idea al activo digital en 3 simples pasos</p>
             </div>
 
             <div class="steps">
@@ -918,6 +967,7 @@
         </div>
     </section>
 
+    <!-- CATEGORIES SECTION -->
     <section class="categories" id="categories">
         <div class="container">
             <div class="section-title">
@@ -953,6 +1003,7 @@
         </div>
     </section>
 
+    <!-- TESTIMONIALS SECTION -->
     <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-title">
@@ -997,6 +1048,7 @@
         </div>
     </section>
 
+    <!-- CTA SECTION -->
     <section class="cta-section" id="waitlist">
         <div class="container">
             <h2 class="animate-fade-in">¿Listo para monetizar tus ideas?</h2>
@@ -1024,6 +1076,7 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -1073,25 +1126,42 @@
     </footer>
 
     <script>
+        // Form submission handler
         document.getElementById('waitlistForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = this.querySelector('input[type="email"]').value;
-            alert('¡Excelente! ' + email + ' ha sido añadido a la lista de espera. Te contactaremos pronto.');
-            this.reset();
+            addToWaitlist(email);
         });
 
         document.getElementById('finalWaitlistForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = this.querySelector('input[type="email"]').value;
-            alert('¡Excelente! ' + email + ' ha sido añadido a la lista de espera. Te contactaremos pronto.');
-            this.reset();
+            addToWaitlist(email);
         });
 
+        function addToWaitlist(email) {
+            // Aquí iría la integración con tu backend/Email service
+            console.log('Email añadido a waitlist:', email);
+            
+            // Simular éxito
+            alert('¡Excelente! ' + email + ' ha sido añadido a la lista de espera. Te contactaremos pronto.');
+            
+            // Reset form
+            document.getElementById('waitlistForm').reset();
+            document.getElementById('finalWaitlistForm').reset();
+            
+            // Actualizar contador de social proof (simulado)
+            const creatorsCount = document.querySelector('.proof-item:first-child strong');
+            creatorsCount.textContent = (parseInt(creatorsCount.textContent) + 1) + '+';
+        }
+
+        // Smooth scroll para links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
+                
                 const target = document.querySelector(targetId);
                 if (target) {
                     window.scrollTo({
@@ -1102,6 +1172,7 @@
             });
         });
 
+        // Animación al hacer scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1114,6 +1185,7 @@
             observer.observe(el);
         });
 
+        // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
